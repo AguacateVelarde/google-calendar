@@ -1,0 +1,32 @@
+<div>
+  <h2> Selecciona tu calendario </h2>
+  <ul>
+    <li *ngFor="let item of calendarios">
+      <a class="btn btn-link" (click)="selected( item.id )"> {{ item.summary }} </a>
+    </li>
+  </ul>
+  <div class="container m-3">
+    <div class="card">
+      <div class="card-body">
+          <h4> Tu horario : </h4>
+          {{ homeService.dateinit }} - {{ homeService.dateEnd }}
+      </div> 
+    </div>
+  </div>
+  <div class="container">
+    <h3>Eventos dentro del horario: </h3>
+    <li *ngFor="let item of okEvent">
+         {{ item.summary }} - {{ item.end.dateTime }}
+    </li>
+    <hr>
+    <h3>Eventos fuera del horario: </h3>
+    <li *ngFor="let item of badEvent">
+        {{ item.summary }} - {{ item.end.dateTime }}
+   </li>
+    <hr>  
+  </div>
+  <div class="d-flex justify-content-center align-items-center"> 
+    <a [routerLink]="['/']" > Regresar </a>  
+  
+  </div>
+</div>
